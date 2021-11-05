@@ -1,5 +1,6 @@
 <template>
-        <section>
+    <Tutorial/>
+        <!-- <section>
       <div class="container">
         <div class="logo">
           <img
@@ -15,5 +16,5 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 </template>

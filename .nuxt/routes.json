@@ -1,0 +1,37 @@
+[
+  {
+    "name": "commande",
+    "path": "/commande",
+    "component": "/home/matraore/Desktop/mv/pages/commande.vue",
+    "chunkName": "pages/commande",
+    "_name": "_61f2496a"
+  },
+  {
+    "name": "confirmation",
+    "path": "/confirmation",
+    "component": "/home/matraore/Desktop/mv/pages/confirmation.vue",
+    "chunkName": "pages/confirmation",
+    "_name": "_613079f4"
+  },
+  {
+    "name": "final",
+    "path": "/final",
+    "component": "/home/matraore/Desktop/mv/pages/final.vue",
+    "chunkName": "pages/final",
+    "_name": "_30515075"
+  },
+  {
+    "name": "profile-profile",
+    "path": "/profile/:profile?",
+    "component": "/home/matraore/Desktop/mv/pages/profile/_profile.vue",
+    "chunkName": "pages/profile/_profile",
+    "_name": "_e546ba3e"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/matraore/Desktop/mv/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_29faac5e"
+  }
+]
