@@ -18,11 +18,12 @@
                         <h6 class="text-blueGray-700 text-xl font-bold">
                            Liens Sociaux
                         </h6>
-                        <a
+                        <button
                             id="UpdateUser" class="bg-red-400 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                            type="button">
+                            type="submit"
+                            v-on:click.prevent="UpdateData">
                             Commander
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
@@ -37,7 +38,7 @@
                                         htmlfor="grid-password">
                                     Whatsapp
                                     </label>
-                                    <input id="UserWhatsapp" type="text"
+                                    <input v-model="whatsapp" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="url Whatsapp">
                                 </div>
@@ -48,7 +49,7 @@
                                         htmlfor="grid-password">
                                         Facebook
                                     </label>
-                                    <input id="UserFacebook" type="text"
+                                    <input v-model="facebook" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="url facebook">
                                 </div>
@@ -59,7 +60,7 @@
                                         htmlfor="grid-password">
                                         LinkedIn
                                     </label>
-                                    <input id="UserLinkedin" type="text"
+                                    <input v-model="linkedin" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="url linkedin">
                                 </div>
@@ -70,7 +71,7 @@
                                         htmlfor="grid-password">
                                         Instagram
                                     </label>
-                                    <input id="UserInstagram" type="text"
+                                    <input v-model="instagram" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="url instagram">
                                 </div>
@@ -81,12 +82,12 @@
                                         htmlfor="grid-password">
                                         Tiktok
                                     </label>
-                                    <input id="UserTiktok" type="text"
+                                    <input v-model="tiktok" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="url Tiktok">
                                 </div>
                             </div>
-                            <span id="UserInputErrors" class="text-danger"></span>
+                            <span class="text-danger">{{ errors }}</span>
                         </div>
                     </form>
                 </div>
@@ -106,3 +107,59 @@
     </section>
     </div>
 </template>
+<script>
+    export default {
+        data () {
+            return {
+                whatsapp: "",
+                facebook: "",
+                linkedin: "",
+                instagram: "",
+                tiktok: "",
+                errors: ""
+            };
+        },
+        methods: {
+            async UpdateData () {
+                const userData = JSON.parse(localStorage.getItem("userData"));
+                if (!userData || !userData.userId || !userData.token) {
+                    this.errors = "You Are Not Register!";
+                } else {
+                    this.whatsapp = this.whatsapp.trim();
+                    this.facebook = this.facebook.trim();
+                    this.linkedin = this.linkedin.trim();
+                    this.instagram = this.instagram.trim();
+                    this.tiktok = this.tiktok.trim();
+                    try {
+                        const response = await fetch(
+                            `http://localhost:5000/api/users/update/${userData.userId}`,
+                            {
+                                method: "PATCH",
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${userData.token}`
+                                },
+                                body: JSON.stringify({
+                                    "whatsapp": this.whatsapp,
+                                    "facebook": this.facebook,
+                                    "linkedin": this.linkedin,
+                                    "instagram": this.instagram,
+                                    "tiktok": this.tiktok
+                                }) 
+                            }
+                        );
+                        const content = await response.json();
+                        if (content.message) {
+                            this.errors = content.message;
+                        } else {
+                            await this.$router.push(`/profile/${userData.userId}`);
+                        }
+                    } catch (err) {
+                        console.log(err);
+                        this.errors = "Something Went Wrong!";
+                    }
+                }
+            }
+        }
+    }
+</script>
