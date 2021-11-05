@@ -4,11 +4,11 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _61f2496a = () => interopDefault(import('../pages/commande.vue' /* webpackChunkName: "pages/commande" */))
-const _613079f4 = () => interopDefault(import('../pages/confirmation.vue' /* webpackChunkName: "pages/confirmation" */))
-const _30515075 = () => interopDefault(import('../pages/final.vue' /* webpackChunkName: "pages/final" */))
-const _e546ba3e = () => interopDefault(import('../pages/profile/_profile.vue' /* webpackChunkName: "pages/profile/_profile" */))
-const _29faac5e = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _1a9f59a4 = () => interopDefault(import('../pages/commande.vue' /* webpackChunkName: "pages/commande" */))
+const _e006dd2e = () => interopDefault(import('../pages/confirmation.vue' /* webpackChunkName: "pages/confirmation" */))
+const _60c2c91c = () => interopDefault(import('../pages/final.vue' /* webpackChunkName: "pages/final" */))
+const _404d87c4 = () => interopDefault(import('../pages/profile/_profile.vue' /* webpackChunkName: "pages/profile/_profile" */))
+const _eb601664 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -23,23 +23,23 @@ export const routerOptions = {
 
   routes: [{
     path: "/commande",
-    component: _61f2496a,
+    component: _1a9f59a4,
     name: "commande"
   }, {
     path: "/confirmation",
-    component: _613079f4,
+    component: _e006dd2e,
     name: "confirmation"
   }, {
     path: "/final",
-    component: _30515075,
+    component: _60c2c91c,
     name: "final"
   }, {
     path: "/profile/:profile?",
-    component: _e546ba3e,
+    component: _404d87c4,
     name: "profile-profile"
   }, {
     path: "/",
-    component: _29faac5e,
+    component: _eb601664,
     name: "index"
   }],
 

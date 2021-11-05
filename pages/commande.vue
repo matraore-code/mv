@@ -15,11 +15,12 @@
                         <h6 class="text-blueGray-700 text-xl font-bold">
                             Mes Informations
                         </h6>
-                        <!-- <a
-                            id="sendForm" class="bg-red-400 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                            type="button">
+                        <button
+                            class="bg-red-400 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                            type="submit"
+                            v-on:click.prevent="submit" >
                             Suivant >
-                        </a> -->
+                        </button>
                     </div>
                 </div>
                 <div class="flex-auto px-2 lg:px-10 py-10 pt-0">
@@ -42,7 +43,7 @@
                                             <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
                                           </svg>
                                         </span>
-                                        <input type="file" id="UserImage" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        <input ref="file" type="file" @change="onSelect" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                       </div>
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
                                         htmlfor="grid-password">
                                     Adresse email
                                     </label>
-                                    <input id="UserEmail" type="email"
+                                    <input v-model="email" type="email"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="moctar@example.com">
                                 </div>
@@ -66,7 +67,7 @@
                                         htmlfor="grid-password">
                                         Prénom (s)
                                     </label>
-                                    <input id="UserSurname" type="text"
+                                    <input v-model="surname" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Moctar">
                                 </div>
@@ -77,7 +78,7 @@
                                         htmlfor="grid-password">
                                         Nom
                                     </label>
-                                    <input id="UserName" type="text"
+                                    <input v-model="name" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Traore">
                                 </div>
@@ -96,7 +97,7 @@
                                         htmlfor="grid-password">
                                         Telephone
                                     </label>
-                                    <input id="UserTelephone" type="text"
+                                    <input v-model="telephone" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="+212 600 000 000">
                                 </div>
@@ -107,7 +108,7 @@
                                         htmlfor="grid-password">
                                         Adresse
                                     </label>
-                                    <input id="UserAddress" type="text"
+                                    <input v-model="address" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
                                 </div>
@@ -118,7 +119,7 @@
                                         htmlfor="grid-password">
                                         Ville
                                     </label>
-                                    <input id="UserCity" type="text"
+                                    <input v-model="city" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="New York">
                                 </div>
@@ -129,7 +130,7 @@
                                         htmlfor="grid-password">
                                         Pays
                                     </label>
-                                    <input id="UserCountry" type="text"
+                                    <input v-model="country" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="United States">
                                 </div>
@@ -140,7 +141,7 @@
                                         htmlfor="grid-password">
                                         Code Postal 
                                     </label>
-                                    <input id="UserCodePostal" type="text"
+                                    <input v-model="codePostal" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Postal Code">
                                 </div>
@@ -159,7 +160,7 @@
                                         htmlfor="grid-password">
                                         Profession
                                     </label>
-                                    <input id="UserProfession" type="text"
+                                    <input v-model="profession" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         placeholder="Developpeur Web">
                                 </div>
@@ -170,18 +171,12 @@
                                         htmlfor="grid-password">
                                         Biographie
                                     </label>
-                                    <textarea id="UserBiography" type="text"
+                                    <textarea v-model="biography" type="text"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                         rows="4" placeholder="Write Your Biography Here!"></textarea>
                                 </div>
-                                <span id="UserInputErrors" class="text-danger"></span>
+                                <span class="text-danger">{{ errors }}</span>
                             </div>
-                            <button id="ButtonForm"
-                                class="bg-red-400 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                                type="submit">
-                                Suivant >
-                        </button>
-                            
                         </div>
                     </form>
                 </div>
@@ -203,3 +198,103 @@
     </div>
 
 </template>
+<script>
+    export default {
+        data () {
+            return {
+                image: null,
+                email: "",
+                name: "",
+                surname: "",
+                telephone: "",
+                address: "",
+                city: "",
+                country: "",
+                codePostal: "",
+                profession: "",
+                biography: "",
+                errors: "",
+            };
+        },
+        methods: {
+            onSelect() {
+                const file = this.$refs.file.files[0];
+                this.image = file;
+            },
+            check_all() {
+                this.name = this.name.trim();
+                this.surname = this.surname.trim();
+                this.email = this.email.trim();
+                this.telephone = this.telephone.trim();
+                this.profession = this.profession.trim();
+                this.address = this.address.trim();
+                this.city = this.city.trim();
+                this.codePostal = this.codePostal.trim();
+                this.biography = this.biography.trim();
+                if (
+                    this.name === "" ||
+                    this.surname === "" ||
+                    this.email === "" ||
+                    this.telephone === "" ||
+                    this.prefession === "" ||
+                    this.address === "" ||
+                    this.city === "" ||
+                    this.codePostal === "" ||
+                    this.country === "" ||
+                    this.biography === ""
+                ) {
+                    this.errors = "Remplir tous les champs.";
+                } else if (this.image == null)
+                {
+                    this.errors = "Please choose un image.";
+                }
+                else {
+                    this.errors = "";
+                }
+            },
+            async submit () {
+                this.check_all()
+                if (this.errors === "") {
+                    try {
+                        const formData = new FormData();
+                        formData.append("image", this.image);
+                        formData.append("email", this.email);
+                        formData.append("surname", this.surname);
+                        formData.append("name", this.name);
+                        formData.append("telephone", this.telephone);
+                        formData.append("address", this.address);
+                        formData.append("city", this.city);
+                        formData.append("country", this.country);
+                        formData.append("codePostal", this.codePostal);
+                        formData.append("profession", this.profession);
+                        formData.append("biography", this.biography);
+                        const response = await fetch(
+                            `http://localhost:5000/api/users/signup`,
+                            {
+                                method: "POST",
+                                body: formData
+                            }
+                        );
+                        const content = await response.json();
+                        if (content.message) {
+                            this.errors = content.message;
+                        }
+                        else {
+                            localStorage.setItem(
+                                "userData",
+                                JSON.stringify({
+                                  userId: await content.userId,
+                                  token: await content.token,
+                                })
+                            );
+                            await this.$router.push("/final");
+                        }
+                    } catch (err) {
+                        console.log(err);
+                        this.errors = "Something Went Wrong!";
+                    }
+                }
+            }
+        }
+    }
+</script>

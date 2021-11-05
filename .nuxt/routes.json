@@ -2,36 +2,36 @@
   {
     "name": "commande",
     "path": "/commande",
-    "component": "/home/matraore/Desktop/mv/pages/commande.vue",
+    "component": "/goinfre/mlachheb/mv/pages/commande.vue",
     "chunkName": "pages/commande",
-    "_name": "_61f2496a"
+    "_name": "_1a9f59a4"
   },
   {
     "name": "confirmation",
     "path": "/confirmation",
-    "component": "/home/matraore/Desktop/mv/pages/confirmation.vue",
+    "component": "/goinfre/mlachheb/mv/pages/confirmation.vue",
     "chunkName": "pages/confirmation",
-    "_name": "_613079f4"
+    "_name": "_e006dd2e"
   },
   {
     "name": "final",
     "path": "/final",
-    "component": "/home/matraore/Desktop/mv/pages/final.vue",
+    "component": "/goinfre/mlachheb/mv/pages/final.vue",
     "chunkName": "pages/final",
-    "_name": "_30515075"
+    "_name": "_60c2c91c"
   },
   {
     "name": "profile-profile",
     "path": "/profile/:profile?",
-    "component": "/home/matraore/Desktop/mv/pages/profile/_profile.vue",
+    "component": "/goinfre/mlachheb/mv/pages/profile/_profile.vue",
     "chunkName": "pages/profile/_profile",
-    "_name": "_e546ba3e"
+    "_name": "_404d87c4"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/home/matraore/Desktop/mv/pages/index.vue",
+    "component": "/goinfre/mlachheb/mv/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_29faac5e"
+    "_name": "_eb601664"
   }
 ]
