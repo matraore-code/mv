@@ -123,7 +123,7 @@
             async UpdateData () {
                 const userData = JSON.parse(localStorage.getItem("userData"));
                 if (!userData || !userData.userId || !userData.token) {
-                    this.errors = "You Are Not Register!";
+                    this.$router.push("/commande");
                 } else {
                     this.whatsapp = this.whatsapp.trim();
                     this.facebook = this.facebook.trim();
@@ -132,7 +132,7 @@
                     this.tiktok = this.tiktok.trim();
                     try {
                         const response = await fetch(
-                            `${process.env.NUXT_APP_API_ENDPOINT || "http://10.11.13.5:5000"}/api/users/update/${userData.userId}`,
+                            `${process.env.NUXT_APP_API_ENDPOINT || "http://localhost:5000"}/api/users/update/${userData.userId}`,
                             {
                                 method: "PATCH",
                                 headers: {

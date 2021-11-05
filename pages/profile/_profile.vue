@@ -148,11 +148,12 @@
     },
     async mounted() {
       try {
+        console.log(process.env.NUXT_APP_API_ENDPOINT);
         if (!this.$route.params.profile) {
           this.$router.push("/");
         }
         const response = await fetch(
-          `${process.env.NUXT_APP_API_ENDPOINT || "http://10.11.13.5:5000"}/api/users/${this.$route.params.profile}`,
+          `${process.env.NUXT_APP_API_ENDPOINT || "http://localhost:5000"}/api/users/${this.$route.params.profile}`,
           {
             method: "GET",
             headers: {
@@ -167,7 +168,7 @@
           const user = await content.user;
 
           this.fetched = true;
-          this.image = `http://10.11.13.5:5000/${user.image}`;
+          this.image = `${process.env.NUXT_APP_API_ENDPOINT || "http://localhost:5000"}/${user.image}`;
           this.fullName = `${user.surname} ${user.name}`;
           this.cityCountry = `${user.city}, ${user.country}`;
           this.sms = `sms:${user.telephone}`;

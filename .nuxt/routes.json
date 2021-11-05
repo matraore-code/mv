@@ -3,30 +3,35 @@
     "name": "commande",
     "path": "/commande",
     "component": "/goinfre/mlachheb/mv/pages/commande.vue",
-    "chunkName": "pages/commande"
+    "chunkName": "pages/commande",
+    "_name": "_1a9f59a4"
   },
   {
     "name": "confirmation",
     "path": "/confirmation",
     "component": "/goinfre/mlachheb/mv/pages/confirmation.vue",
-    "chunkName": "pages/confirmation"
+    "chunkName": "pages/confirmation",
+    "_name": "_e006dd2e"
   },
   {
     "name": "final",
     "path": "/final",
     "component": "/goinfre/mlachheb/mv/pages/final.vue",
-    "chunkName": "pages/final"
+    "chunkName": "pages/final",
+    "_name": "_60c2c91c"
   },
   {
     "name": "profile-profile",
     "path": "/profile/:profile?",
     "component": "/goinfre/mlachheb/mv/pages/profile/_profile.vue",
-    "chunkName": "pages/profile/_profile"
+    "chunkName": "pages/profile/_profile",
+    "_name": "_404d87c4"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/goinfre/mlachheb/mv/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_eb601664"
   }
 ]
