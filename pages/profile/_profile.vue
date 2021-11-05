@@ -26,21 +26,21 @@
                 <div class="flex justify-center py-4 lg:pt-4 pt-8">
                   <div class="mr-4 p-3 text-center">
                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                      <a id="UserMessage"><i class="fas fa-envelope mr-2 text-lg"></i></a>
+                      <a id="UserMessage" :href="sms"><i class="fas fa-envelope mr-2 text-lg"></i></a>
                       <br />
                     </span>
                     <span class="text-sm text-blueGray-400">Message</span>
                   </div>
                   <div class="mr-4 p-3 text-center">
                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                      <a id="UserTelephone" href="#"><i class="fas fa-phone mr-2 text-lg"></i></a>
+                      <a id="UserTelephone" :href="telephone"><i class="fas fa-phone mr-2 text-lg"></i></a>
                       <br />
                     </span>
                     <span class="text-sm text-blueGray-400">Telephone</span>
                   </div>
                   <div class="mr-4 p-3 text-center">
                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                      <a id="UserEmail" href="#"><i class="fas fa-at mr-2 text-lg"></i></a>
+                      <a id="UserEmail" :href="email"><i class="fas fa-at mr-2 text-lg"></i></a>
                       <br />
                     </span>
                     <span class="text-sm text-blueGray-400">Email</span>
@@ -76,25 +76,25 @@
             <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
               <div class="flex flex-wrap justify-start">
                 <div class="w-full lg:w-9/12 bg-blue-400 py-3 px-2 rounded-md mb-4">
-                  <a id="UserLinkedin" href="#" class="text-white">
+                  <a id="UserLinkedin" :href="linkedin" class="text-white">
                     <i class="float-left fab fa-linkedin mr-2 text-lg"></i>
                     Linkedin
                   </a>
                 </div>
                 <div class="w-full lg:w-9/12 bg-green-400 py-3 px-2 rounded-md mb-4">
-                  <a id="UserWhatsapp" href="#" class="text-white">
+                  <a id="UserWhatsapp" :href="whatsapp" class="text-white">
                     <i class="float-left fab fa-whatsapp mr-2 text-lg"></i>
                     Whatsapp
                   </a>
                 </div>
                 <div class="w-full lg:w-9/12 bg-blue-600 py-3 px-2 rounded-md mb-4">
-                  <a id="UserFacebook" href="#" class="text-white">
+                  <a id="UserFacebook" :href="facebook" class="text-white">
                     <i class="float-left fab fa-facebook mr-2 text-lg"></i>
                     Facebook
                   </a>
                 </div>
                 <div class="w-full lg:w-9/12 bg-red-600 py-3 px-2 rounded-md mb-4">
-                  <a id="UserInstagram" href="#" class="text-white">
+                  <a id="UserInstagram" :href="instagram" class="text-white">
                     <i class="float-left fab fa-instagram mr-2 text-lg"></i>
                     Instagram
                   </a>
@@ -136,11 +136,21 @@
         fullName: "",
         cityCountry: "",
         biography: "",
+        sms: "",
+        telephone: "",
+        email: "",
+        linkedin: "",
+        whatsapp: "",
+        facebook: "",
+        instagram: "",
         errors: ""
       }
     },
     async mounted() {
       try {
+        if (!this.$route.params.profile) {
+          this.$router.push("/");
+        }
         const response = await fetch(
           `${process.env.NUXT_APP_API_ENDPOINT || "http://10.11.13.5:5000"}/api/users/${this.$route.params.profile}`,
           {
@@ -160,8 +170,14 @@
           this.image = `http://10.11.13.5:5000/${user.image}`;
           this.fullName = `${user.surname} ${user.name}`;
           this.cityCountry = `${user.city}, ${user.country}`;
+          this.sms = `sms:${user.telephone}`;
+          this.telephone = `tel:${user.telephone}`;
+          this.email = `mailto:${user.email}`;
+          this.linkedin = `${user.linkedin}`;
+          this.whatsapp = `${user.whatsapp}`;
+          this.facebook = `${user.facebook}`;
+          this.instagram = `${user.instagram}`;
           this.biography = user.biography;
-          console.log(user);
         }
       } catch (err) {
         console.log(err);
