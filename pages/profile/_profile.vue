@@ -142,7 +142,7 @@
     async mounted() {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/users/${this.$route.params.profile}`,
+          `${process.env.NUXT_APP_API_ENDPOINT || "http://10.11.13.5:5000"}/api/users/${this.$route.params.profile}`,
           {
             method: "GET",
             headers: {
@@ -157,7 +157,7 @@
           const user = await content.user;
 
           this.fetched = true;
-          this.image = `http://localhost:5000/${user.image}`;
+          this.image = `http://10.11.13.5:5000/${user.image}`;
           this.fullName = `${user.surname} ${user.name}`;
           this.cityCountry = `${user.city}, ${user.country}`;
           this.biography = user.biography;
