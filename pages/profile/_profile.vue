@@ -136,8 +136,12 @@
       return {
         fetched: false,
         image: "",
+        name: "",
+        surname: "",
         fullName: "",
         cityCountry: "",
+        address: "",
+        profession: "",
         biography: "",
         sms: "",
         telephone: "",
@@ -147,6 +151,7 @@
         facebook: "",
         instagram: "",
         social: false,
+        vcfFile: null,
         errors: ""
       }
     },
@@ -173,7 +178,10 @@
           this.fetched = true;
           this.image = `http://10.11.13.5:5000/${user.image}`;
           this.fullName = `${user.surname} ${user.name}`;
+          this.name = user.name;
+          this.surname = user.surname;
           this.cityCountry = `${user.city}, ${user.country}`;
+          this.address = user.address;
           this.sms = `sms:${user.telephone}`;
           this.telephone = `tel:${user.telephone}`;
           this.email = `mailto:${user.email}`;
@@ -191,7 +199,31 @@
     },
     methods: {
       async SaveContact() {
-        console.log(this.$config.hosthost);
+        // const vCardJS = require('vcards-js');
+
+        // // first method
+        // let vCardStr = "";
+        // vCardStr += "BEGIN:VCARD\n";
+        // vCardStr += "VERSION:4.0\n";
+        // vCardStr += `N:${this.surname};${this.name}\n`;
+        // vCardStr += `FN:${user.surname} ${user.name}\n`;
+        // vCardStr += `TITLE: ${this.profession}\n`;
+        // vCardStr += `PHOTO;MEDIATYPE=image/gif:${this.image}\n`;
+        // vCardStr += `TEL;TYPE=work,voice;VALUE=uri:tel:${this.telephone}\n`;
+        // vCardStr += `ADR;TYPE=work;LABEL="${this.address}, ${this.cityCountry}"\n`;
+        // vCardStr += `EMAIL:${this.email}\n`;
+        // vCardStr += "REV:20080424T195243Z\n";
+        // vCardStr += "END:VCARD\n";
+
+        // // second methdo
+        // let vCard = vCardJS();
+        // vCard.firstName = this.surname;
+        // vCard.lastName = this.name;
+        // vCard.workPhone = this.telephone;
+        // vCard.title = this.profession;
+
+        // vCard.saveToFile(`./${this.fullName}.vcf`);
+        // console.log(vCard.getFormattedString());
       }
     }
   }
