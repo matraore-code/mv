@@ -136,8 +136,6 @@
       return {
         fetched: false,
         image: "",
-        name: "",
-        surname: "",
         fullName: "",
         cityCountry: "",
         address: "",
@@ -151,7 +149,6 @@
         facebook: "",
         instagram: "",
         social: false,
-        vcfFile: null,
         errors: ""
       }
     },
@@ -199,31 +196,29 @@
     },
     methods: {
       async SaveContact() {
-        // const vCardJS = require('vcards-js');
-
-        // // first method
-        // let vCardStr = "";
-        // vCardStr += "BEGIN:VCARD\n";
-        // vCardStr += "VERSION:4.0\n";
-        // vCardStr += `N:${this.surname};${this.name}\n`;
-        // vCardStr += `FN:${user.surname} ${user.name}\n`;
-        // vCardStr += `TITLE: ${this.profession}\n`;
-        // vCardStr += `PHOTO;MEDIATYPE=image/gif:${this.image}\n`;
-        // vCardStr += `TEL;TYPE=work,voice;VALUE=uri:tel:${this.telephone}\n`;
-        // vCardStr += `ADR;TYPE=work;LABEL="${this.address}, ${this.cityCountry}"\n`;
-        // vCardStr += `EMAIL:${this.email}\n`;
-        // vCardStr += "REV:20080424T195243Z\n";
-        // vCardStr += "END:VCARD\n";
-
-        // // second methdo
-        // let vCard = vCardJS();
-        // vCard.firstName = this.surname;
-        // vCard.lastName = this.name;
-        // vCard.workPhone = this.telephone;
-        // vCard.title = this.profession;
-
-        // vCard.saveToFile(`./${this.fullName}.vcf`);
-        // console.log(vCard.getFormattedString());
+        try {
+          if (!this.$route.params.profile) {
+            this.$router.push("/");
+          }
+          const response = await fetch(
+            `http://10.11.13.5:5000/api/contacts/${this.$route.params.profile}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json"
+              }
+            }
+          );
+          const content = await response.json();
+          if (content.message) {
+            this.errors = content.message;
+          } else {
+            window.location.href = `http://10.11.13.5:5000/${content.link}`;
+          }
+        } catch (err) {
+          console.log(err);
+          this.errors = err;
+        }
       }
     }
   }

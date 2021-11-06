@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN;CHARSET=UTF-8:Mohamed amine Lachheb
+N;CHARSET=UTF-8:Lachheb;Mohamed amine;;;
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:mlachheb@student.1337.ma
+PHOTO;TYPE=undefined:uploads/images/8c79a6ce-65d2-4413-99fd-dbc4c52a7eaf.png
+TEL;TYPE=WORK,VOICE:0617395120
+ADR;CHARSET=UTF-8;TYPE=HOME:;;;Benguerir;;10040;Morocco 
+TITLE;CHARSET=UTF-8:Developer web
+URL;CHARSET=UTF-8:https://www.linkedin.com/in/mohamed-amine-lachheb-b37479222
+REV:2021-11-06T19:07:51.905Z
+END:VCARD

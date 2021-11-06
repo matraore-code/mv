@@ -7,12 +7,14 @@ const mongoose = require('mongoose');
 const HttpError = require('./models/http-error');
 
 const usersRoutes = require('./routes/users-routes');
+const vCardRoutes = require('./routes/vCards-routes');
 
 const app = express();
 
 app.use(bodyParser.json());
 
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
+app.use('/uploads/contacts', express.static(path.join('uploads', 'contacts')));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -25,6 +27,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/users', usersRoutes);
+
+app.use('/api/contacts', vCardRoutes);
 
 app.use((req, res, next) => {
     throw new HttpError("Could Not Find This Route!", 404);
