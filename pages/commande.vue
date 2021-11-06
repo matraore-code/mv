@@ -269,7 +269,7 @@
                         formData.append("profession", this.profession);
                         formData.append("biography", this.biography);
                         const response = await fetch(
-                            `${process.env.NUXT_APP_API_ENDPOINT || "http://10.11.13.5:5000"}/api/users/signup`,
+                            `http://10.11.13.5:5000/api/users/signup`,
                             {
                                 method: "POST",
                                 body: formData

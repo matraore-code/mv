@@ -50,5 +50,8 @@ export default {
   },
   server: {
     host: "0.0.0.0"
+  },
+  publicRuntimeConfig: {
+    publicHost: process.env.NUXT_APP_API_ENDPOINT || "http://localhost:5000"
   }
 }

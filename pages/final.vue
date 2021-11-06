@@ -132,7 +132,7 @@
                     this.tiktok = this.tiktok.trim();
                     try {
                         const response = await fetch(
-                            `${process.env.NUXT_APP_API_ENDPOINT || "http://10.11.13.5:5000"}/api/users/update/${userData.userId}`,
+                            `http://10.11.13.5:5000/api/users/update/${userData.userId}`,
                             {
                                 method: "PATCH",
                                 headers: {
