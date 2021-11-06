@@ -122,44 +122,46 @@
         methods: {
             async UpdateData () {
                 const userData = JSON.parse(localStorage.getItem("userData"));
-                if (!userData || !userData.userId || !userData.token) {
-                    this.$router.push("/commande");
-                } else {
-                    this.whatsapp = this.whatsapp.trim();
-                    this.facebook = this.facebook.trim();
-                    this.linkedin = this.linkedin.trim();
-                    this.instagram = this.instagram.trim();
-                    this.tiktok = this.tiktok.trim();
-                    try {
-                        const response = await fetch(
-                            `http://10.11.13.5:5000/api/users/update/${userData.userId}`,
-                            {
-                                method: "PATCH",
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'Authorization': `Bearer ${userData.token}`
-                                },
-                                body: JSON.stringify({
-                                    "whatsapp": this.whatsapp,
-                                    "facebook": this.facebook,
-                                    "linkedin": this.linkedin,
-                                    "instagram": this.instagram,
-                                    "tiktok": this.tiktok
-                                }) 
-                            }
-                        );
-                        const content = await response.json();
-                        if (content.message) {
-                            this.errors = content.message;
-                        } else {
-                            await this.$router.push(`/profile/${userData.userId}`);
+                this.whatsapp = this.whatsapp.trim();
+                this.facebook = this.facebook.trim();
+                this.linkedin = this.linkedin.trim();
+                this.instagram = this.instagram.trim();
+                this.tiktok = this.tiktok.trim();
+                try {
+                    const response = await fetch(
+                        `${"http://10.11.13.5:5000" || "http://localhost:5000"}/api/users/update/${userData.userId}`,
+                        {
+                            method: "PATCH",
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${userData.token}`
+                            },
+                            body: JSON.stringify({
+                                "whatsapp": this.whatsapp,
+                                "facebook": this.facebook,
+                                "linkedin": this.linkedin,
+                                "instagram": this.instagram,
+                                "tiktok": this.tiktok
+                            }) 
                         }
-                    } catch (err) {
-                        console.log(err);
-                        this.errors = "Something Went Wrong!";
+                    );
+                    const content = await response.json();
+                    if (content.message) {
+                        this.errors = content.message;
+                    } else {
+                        await this.$router.push(`/profile/${userData.userId}`);
                     }
+                } catch (err) {
+                    console.log(err);
+                    this.errors = "Something Went Wrong!";
                 }
             }
+        },
+        mounted () {
+            const userData = JSON.parse(localStorage.getItem("userData"));
+            if (!userData || !userData.userId || !userData.token) {
+                this.$router.push("/commande");
         }
     }
+}
 </script>
