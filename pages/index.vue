@@ -9,7 +9,7 @@
             traditionnelles.</p>
         <img src="assets/images/bg_01.png" alt="" srcset="" class="mb-12 mx-auto">
         <div class="text-center">
-            <a href="commande.html" class="bg-red-400 text-white px-5 py-3 mt-8 text-center rounded-md">Commander</a>
+            <a href="/commande" class="bg-red-400 text-white px-5 py-3 mt-8 text-center rounded-md">Commander</a>
         </div>
     </div>
     <div class="container-fluid bg-yellow-100 rounded-xl mt-14 p-8">

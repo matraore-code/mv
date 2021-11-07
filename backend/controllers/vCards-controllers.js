@@ -31,12 +31,12 @@ const generateVCard = async (req, res, next) => {
     vCard.homeAddress.city = user.city;
     vCard.homeAddress.countryRegion = user.country;
     vCard.homeAddress.postalCode = user.codePostal;
+    vCard.homeAddress.street = user.address;
     vCard.photo.attachFromUrl(user.image);
     vCard.workPhone = user.telephone;
     vCard.title = user.profession;
     vCard.url = user.linkedin || user.instagram || user.facebook || user.tiktok || '';
     vCard.saveToFile(`./uploads/contacts/${user._id}.vcf`);
-
     res.json({ UserId: user._id, link: `uploads/contacts/${user._id}.vcf`});
 };
 

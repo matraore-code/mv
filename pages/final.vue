@@ -18,12 +18,6 @@
                         <h6 class="text-blueGray-700 text-xl font-bold">
                            Liens Sociaux
                         </h6>
-                        <button
-                            id="UpdateUser" class="bg-red-400 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                            type="submit"
-                            v-on:click.prevent="UpdateData">
-                            Commander
-                        </button>
                     </div>
                 </div>
                 <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
@@ -88,6 +82,12 @@
                                 </div>
                             </div>
                             <span class="text-danger">{{ errors }}</span>
+                            <button
+                                id="UpdateUser" class="bg-red-400 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                type="submit"
+                                v-on:click.prevent="UpdateData">
+                                Commander
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -129,7 +129,7 @@
                 this.tiktok = this.tiktok.trim();
                 try {
                     const response = await fetch(
-                        `${"http://10.11.13.5:5000" || "http://localhost:5000"}/api/users/update/${userData.userId}`,
+                        `${"http://10.11.13.1:5000" || "http://localhost:5000"}/api/users/update/${userData.userId}`,
                         {
                             method: "PATCH",
                             headers: {
